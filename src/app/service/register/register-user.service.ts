@@ -13,8 +13,6 @@ export class RegisterUserService {
   constructor(private http: HttpClient) { }
 
   postRegisterUser(json: Object): Observable<any> {
-
-    console.log(json);
     
     var headers = { 'Content-type': 'application/json' }
 

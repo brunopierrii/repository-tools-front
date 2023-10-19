@@ -1,1 +1,18 @@
-<p>home works!</p>
+<div class="container">
+    <div class="container-home">
+        <mat-card class="card-home">
+            <mat-card-content>
+                <mat-list *ngFor="let tool of toolsList">
+                    <mat-list-item>
+                        <span matListItemTitle>{{ tool.title }}</span>
+                        <a href="{{ tool.link }}" target="_blank" matListItemLine>{{ tool.link }}</a>
+                        <!-- <mat-chip-set cdkDropList cdkDropListOrientation="horizontal"> -->
+                            <mat-chip cdkDrag *ngFor="let tag of tool.tags">{{ tag }}</mat-chip>
+                        <!-- </mat-chip-set> -->
+                    </mat-list-item>
+                    <mat-divider></mat-divider>
+                </mat-list>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>

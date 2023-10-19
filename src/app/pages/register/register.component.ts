@@ -11,7 +11,6 @@ import { RegisterUserService } from 'src/app/service/register/register-user.serv
 })
 export class RegisterComponent implements OnInit{
 
-  private urlApi = 'https://localhost:8000';
   protected requestSpinner: boolean = false;
   protected errorMinusculoEmail: boolean = false;
   protected emailExists: boolean = false;
@@ -22,7 +21,7 @@ export class RegisterComponent implements OnInit{
     private registerUserService: RegisterUserService,
     private router: Router
   ) {
-    
+
     if(localStorage.getItem('token')){
       this.router.navigate(['/home']);
     }

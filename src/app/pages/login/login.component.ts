@@ -23,8 +23,6 @@ export class LoginComponent implements OnInit{
     private loginUserService: LoginUserService,
   ) {
 
-    localStorage.removeItem('token');
-
     if(localStorage.getItem('token')){
       this.router.navigate(['/home']);
     }

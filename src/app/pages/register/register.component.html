@@ -1,0 +1,74 @@
+<div class="container">
+    <div class="container-form">
+
+        <mat-card class="card">
+
+            <mat-card-header class="card-title">
+                <mat-card-title id="title-card">Registrar-se</mat-card-title>
+            </mat-card-header>
+
+            <mat-card-subtitle id="subtitle">Repository Tools</mat-card-subtitle>
+
+            <mat-card-content class="card-content">
+
+                <form class="form"  [formGroup]="formulario" (submit)="sendPostRequest()">
+
+                    <mat-form-field class="field">
+                        <mat-label>Nome</mat-label>
+                        <input type="text" formControlName="name" matInput>
+                    </mat-form-field>
+                    <div class="msg-error-form" *ngIf="formulario.get('name')?.errors?.['required'] && formulario.get('name')?.touched">
+                        Nome é obrigatório.
+                    </div>
+
+                    <mat-form-field class="field">
+                        <mat-label>E-mail</mat-label>
+                        <input type="email" formControlName="email" matInput>
+                    </mat-form-field>
+                    <div class="msg-error-form" *ngIf="formulario.get('email')?.errors && !formulario.hasError('required') && formulario.get('email')?.touched">
+                        O endereço de e-mail não é válido.
+                    </div>
+                    <div class="msg-error-form" *ngIf="formulario.get('email')?.errors?.['required'] && formulario.get('email')?.touched">
+                        E-mail é obrigatório.
+                    </div>
+                    <div class="msg-error-form" *ngIf="errorMinusculoEmail">
+                        E-mail aceita apenas letras minúsculas.
+                    </div>
+                    <div class="msg-error-form" *ngIf="emailExists">
+                        O campo e-mail já sendo utillizado.
+                    </div>
+
+                    <mat-form-field class="field">
+                        <mat-label>Senha</mat-label>
+                        <input type="password" formControlName="password" matInput>
+                    </mat-form-field>
+                    <div class="msg-error-form" *ngIf="formulario.get('password')?.errors?.['required'] && formulario.get('password')?.touched">
+                        Senha é obrigatório.
+                    </div>
+                    <div class="msg-error-form" *ngIf="formulario.get('password').hasError('minlength')">
+                        A senha deve ter no mínimo 6 caracteres.
+                    </div>
+
+                    <div class="btn-form">
+                        <button id="btn-login" type="submit" [disabled]="formulario.invalid" mat-raised-button>Cadastrar</button>
+                    </div>
+
+                </form>
+
+                <div class="card-actions">
+                    <button id="btn-action-register" routerLink="/login" mat-button>Login</button>
+                    <a id="btn-action-about" href="https://github.com/brunopierrii/repository-tools" target="_blank" mat-button>
+                        <mat-icon>code</mat-icon>
+                        Código fonte
+                    </a>
+                </div>
+
+            </mat-card-content>
+
+        </mat-card>
+
+        <mat-spinner *ngIf="requestSpinner" style="position: absolute;"></mat-spinner>
+
+
+    </div>
+</div>

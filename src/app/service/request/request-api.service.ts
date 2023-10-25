@@ -30,18 +30,44 @@ export class RequestApiService {
 
     const headers = this.headers;
 
-    this.checkRoleUser();
-
     return this.http.get(`${this.urlApi}/api/tools`, {headers});
+  }
+
+  postNewTool(json: Object): Observable<any> {
+
+    const headers = this.headers;
+
+    return this.http.post(`${this.urlApi}/api/tools/new`, json, {headers})
+  }
+
+  editTool(id: string, json: Object): Observable<any> {
+
+    const headers = this.headers;
+
+    return this.http.put(`${this.urlApi}/api/tools/edit/${id}`, {headers})
+
+  }
+
+  deleteTool(id: string): Observable<any> {
+
+    const headers = this.headers;
+
+    return this.http.delete(`${this.urlApi}/api/tools/delete/${id}`, {headers})
+
   }
 
   checkRoleUser(){
 
     const decodeToken = this.jwtService.decodeToken(this.token);
     
-    // console.log(decodeToken.roles.includes("ROLE_USER"));
-    // console.log(this.token);
+    console.log(decodeToken);
 
+  }
+
+  getInfoUser(): String {
+    const decodeToken = this.jwtService.decodeToken(this.token);
+    
+    return decodeToken;
   }
 
 }

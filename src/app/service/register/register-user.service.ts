@@ -7,7 +7,8 @@ import { Observable } from 'rxjs';
 })
 export class RegisterUserService {
   
-  private urlApi: String = 'https://localhost:8000';
+  // private urlApi: String = 'https://localhost:8000';
+  private urlApi: String = 'http://repository-tools.brunopierri.dev.br:3000';
   private endPointRegister: String = '/api/app/register';
 
   constructor(private http: HttpClient) { }

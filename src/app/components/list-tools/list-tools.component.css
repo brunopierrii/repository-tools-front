@@ -1,0 +1,51 @@
+.section-table {
+    height: auto;
+    max-height: 500px;
+    overflow: auto;
+}
+
+.input-filter-class {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+#input-filter {
+    width: 45%;
+}
+
+.btn-new {
+    margin: 10px 10px;
+}
+
+.btn-new button{
+    font-size: 18px;
+}
+
+.th-title {
+    font-size: 20px;
+    text-align: center;
+    color: #3f51b5;
+}
+
+.td-name {
+    font-size: 16px;
+    font-weight: 500;   
+    text-align: center;
+}
+
+.td-data {
+    text-align: center;
+}
+
+.td-data a {
+    text-decoration: none;
+    color: var(--mdc-list-list-item-supporting-text-color);
+}
+
+.mat-cell {
+    padding: 20px;
+    text-align: center;
+    font-size: 18px;
+    color: rgb(102, 102, 102);
+}

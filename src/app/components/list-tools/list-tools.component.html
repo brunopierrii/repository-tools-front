@@ -1,0 +1,78 @@
+<!-- <div *ngIf="listEmpty"> -->
+
+<div class="input-filter-class">
+    <mat-form-field id="input-filter">
+        <mat-label>Buscar</mat-label>
+        <input matInput (keyup)="applyFilter($event)" #input>
+    </mat-form-field>
+    <div class="btn-new">
+        <button mat-raised-button (click)="openDialog()" color="primary">Adicionar</button>
+    </div>
+</div>
+
+<section class="section-table mat-elevation-z8" tabindex="0">
+    <table class="table" mat-table [dataSource]="tools">
+        <ng-container matColumnDef="name">
+            <th class="th-title" mat-header-cell *matHeaderCellDef> Nome </th>
+            <td class="td-name" mat-cell *matCellDef="let element"> {{element.title }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="link">
+            <th class="th-title" mat-header-cell *matHeaderCellDef> Link <mat-icon>open_in_new</mat-icon></th>
+            <td class="td-data" mat-cell *matCellDef="let element">
+                <a class="link-tool" href="{{ element.link }}" target="_blank">{{ element.link }}</a>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="description">
+            <th class="th-title" mat-header-cell *matHeaderCellDef> Descrição </th>
+            <td class="td-data" mat-cell *matCellDef="let element"> {{element.description}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="tags">
+            <th class="th-title" mat-header-cell *matHeaderCellDef> Tags </th>
+            <td class="td-data" mat-cell *matCellDef="let element">
+                <mat-list>
+                    <mat-list-item *ngFor="let tag of element.tags">
+                        <mat-chip class="chip">{{ tag }}</mat-chip>
+                    </mat-list-item>
+                </mat-list>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="actions">
+            <th class="th-title" mat-header-cell *matHeaderCellDef> Ações </th>
+            <td class="td-data" mat-cell *matCellDef="let element">
+                <button (click)="editTools(element.id)" mat-icon-button>
+                    <mat-icon style="color: #3f51b5;">edit</mat-icon>
+                </button>
+                <button (click)="dialogDeleteTools(element.id)" mat-icon-button>
+                    <mat-icon style="color: #3f51b5;">delete</mat-icon>
+                </button>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+        <div *ngIf="!listEmpty">
+            <tr class="mat-row" *matNoDataRow>
+                <td [attr.colspan]="4" class="mat-cell">
+                    Nenhum dado correspondente a busca: {{ input.value }}
+                </td>
+            </tr>
+        </div>
+
+        <div *ngIf="listEmpty">
+            <tr class="mat-row" *matNoDataRow>
+                <td [attr.colspan]="4" class="mat-cell">
+                    <span>Você não possui registros ainda, insira e mantenha suas ferramentas organizadas</span>
+                </td>
+            </tr>
+        </div>
+    </table>
+    <div *ngIf="requestSpinner" class="spinner-load" >
+        <mat-spinner ></mat-spinner>
+    </div>
+</section>
+<!-- </div> -->

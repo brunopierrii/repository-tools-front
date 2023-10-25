@@ -1,0 +1,19 @@
+.toolbar {
+    display: flex;
+    position: fixed;
+    z-index: 1;
+}
+
+.name-app {
+    flex: 1;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.name-user {
+    font-size: 17px;
+}
+
+.btn-logout {
+    font-size: 18px;
+}

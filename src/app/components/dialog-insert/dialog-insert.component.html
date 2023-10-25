@@ -1,0 +1,64 @@
+<div class="container-dialog">
+
+    <div class="title-dialog">
+        <span>Adicione uma nova Ferramenta <mat-icon>build</mat-icon> </span>
+    </div>
+
+    <form class="form-new-tool" [formGroup]="formulario">
+
+        <mat-form-field>
+            <mat-label>Nome</mat-label>
+            <input type="text" formControlName="title" matInput>
+        </mat-form-field>
+        <div class="msg-error-form" *ngIf="formulario.get('title')?.errors?.['required'] && formulario.get('title').touched">
+            Nome é obrigatório.
+        </div>
+
+        <mat-form-field>
+            <mat-label>Link</mat-label>
+            <input type="text" formControlName="link" matInput>
+        </mat-form-field>
+        <div class="msg-error-form" *ngIf="formulario.get('link')?.errors?.['required'] && formulario.get('link').touched">
+            Link é obrigatório.
+        </div>
+
+        <mat-form-field>
+            <mat-label>Descrição</mat-label>
+            <input type="text" formControlName="description" matInput>
+        </mat-form-field>
+        <div class="msg-error-form" *ngIf="formulario.get('description')?.errors?.['required'] && formulario.get('description').touched">
+            Descrição é obrigatório.
+        </div>
+
+        <mat-form-field>
+            <mat-label>Tags</mat-label>
+            <mat-chip-grid #chipGrid aria-label="Adicionar tags">
+                <mat-chip-row *ngFor="let tool of tools" 
+                    (removed)="removeEntry(tool)" 
+                    [editable]="true"
+                    (edited)="editEntry(tool, $event)">
+                    {{ tool }}
+                    <button matChipRemove>
+                        <mat-icon>cancel</mat-icon>
+                    </button>
+                </mat-chip-row>
+                <input type="text" 
+                       placeholder="Adicionar uma tag..."
+                       [matChipInputFor]="chipGrid"
+                       [matChipInputSeparatorKeyCodes]="separatorKeysCode"
+                       [matChipInputAddOnBlur]="addBlour"
+                       (matChipInputTokenEnd)="addEntry($event)">
+                
+            </mat-chip-grid>
+        </mat-form-field>
+
+        <div class="btns-tool">
+            <button mat-raised-button (click)="noThanks()" >Não, obrigado!</button>
+            <button type="submit"  mat-raised-button (click)="sendNewTool()" color="primary" >Salvar</button>
+        </div>
+
+    </form>
+    <div *ngIf="requestSpinner" class="spinner-load" >
+        <mat-spinner ></mat-spinner>
+    </div>
+</div>

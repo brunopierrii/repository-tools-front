@@ -7,7 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { LoginComponent } from './pages/login/login.component';
-import { HomeComponent } from './pages/home/home/home.component';
+import { HomeComponent } from './pages/home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
@@ -18,6 +18,16 @@ import { MatIconModule  } from '@angular/material/icon'
 import { MatProgressSpinnerModule  } from '@angular/material/progress-spinner';
 import { MatListModule } from '@angular/material/list';
 import { MatChipsModule } from '@angular/material/chips';
+import { MatTreeModule } from '@angular/material/tree';
+import { ListToolsComponent } from './components/list-tools/list-tools.component';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatTableModule } from '@angular/material/table';
+import { ToolbarComponent } from './components/toolbar/toolbar.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatDialogModule } from '@angular/material/dialog';
+import { DialogInsertComponent } from './components/dialog-insert/dialog-insert.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { DialogDeleteComponent } from './components/dialog-delete/dialog-delete.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token')
@@ -28,7 +38,11 @@ export function tokenGetter() {
     AppComponent,
     RegisterComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    ListToolsComponent,
+    ToolbarComponent,
+    DialogInsertComponent,
+    DialogDeleteComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,6 +59,12 @@ export function tokenGetter() {
     MatProgressSpinnerModule,
     MatListModule,
     MatChipsModule,
+    MatTreeModule,
+    MatDividerModule,
+    MatTableModule,
+    MatToolbarModule,
+    MatDialogModule,
+    MatSnackBarModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter

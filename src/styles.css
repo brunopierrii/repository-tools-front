@@ -32,8 +32,10 @@ body {
     font-size: 70px;
     font-weight: bold;
     letter-spacing: 3px;
+    line-height: 100%;
     margin-top: -5%;
     margin-bottom: 60px;
+    text-align: center;
     -webkit-text-stroke-width: 4px; /* largura da borda */
     -webkit-text-stroke-color: #3f51b5; /* cor da borda */
 }

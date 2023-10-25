@@ -7,8 +7,9 @@ import { Observable } from 'rxjs';
 })
 export class LoginUserService {
 
-  private urlApi: String = 'https://localhost:8000';
-  private endPointLogin: String = '/api/login'
+  // private urlApi: String = 'https://localhost:8000';
+  private urlApi: String = 'http://repository-tools.brunopierri.dev.br:3000';
+  private endPointLogin: String = '/api/login';
 
   constructor(private http: HttpClient) { }
 

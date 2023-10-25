@@ -1,0 +1,30 @@
+
+<div class="container">
+    <app-toolbar (loading)="onLoading($event)" ></app-toolbar>
+    <div class="container-home">
+        
+        <div *ngIf="requestSpinner; else blockElse" class="spinner-load" >
+            <mat-spinner></mat-spinner>
+        </div>
+
+        <ng-template #blockElse> 
+            <mat-card class="card-home">            
+                
+                <div class="tag-title">
+                    <h1>Olá, <span>bem vindo!</span></h1>
+                </div>
+                
+                <div class="tag-p"></div>
+                
+                <mat-divider style="margin: 16px;"></mat-divider>
+    
+                <mat-card-content>
+                    <app-list-tools [tools]="toolsList" [listEmpty]="isListEmpty" ></app-list-tools>
+                </mat-card-content>
+            </mat-card>
+        </ng-template>
+
+    </div>
+    
+</div>
+

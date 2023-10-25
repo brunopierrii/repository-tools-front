@@ -1,0 +1,41 @@
+.container-home {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    /* flex-direction: column; */
+    justify-content: center;
+    align-items: center;
+}
+
+.card-home {
+    width: 70%;
+    display: flex;
+    justify-content: center;
+    margin-top: 100px;
+    z-index: 0.5;
+}
+
+.tag-title { 
+    width: 100%;
+    padding: 16px;
+    margin-top: 10px;
+}
+
+.tag-title h1 { 
+    font-size: 40px;
+    font-weight: 600;
+    color: #3f51b5;
+}
+
+.tag-title h1 span {
+    color: whitesmoke;
+    -webkit-text-stroke-width: 2px; /* largura da borda */
+    -webkit-text-stroke-color: #3f51b5; /* cor da borda */
+}
+
+@media (max-width: 1000px) {
+
+    .card-home {
+        width: 90%;
+    }   
+}
